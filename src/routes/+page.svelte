@@ -1,24 +1,27 @@
 <script>
-    // Desktop
-    // 1. Create grid with CSS grid with show all button (simple)
-    // 2. Create grid with CSS grid in a modal
-    // 3. Create slideshow using svelte transitions
-    // 4. Add masonry to the grid in modal
+    import ImageGrid from '../lib/Components/ImageCollection/ImageShowcaseGrid/index.svelte'
 
-    // Mobile
-    // 1. Create slideshow using scroll
-    // 2. Create grid with CSS grid in a modal
-    // 1. Create slideshow using scroll
+	// Desktop
+	// 1. Create grid with CSS grid with show all button (simple)
+	// 2. Create grid with CSS grid in a modal
+	// 3. Create slideshow using svelte transitions
+	// 4. Add masonry to the grid in modal
 
-    // Make use of route and listing_id in 
+	// Mobile
+	// 1. Create slideshow using scroll
+	// 2. Create grid with CSS grid in a modal
+	// 1. Create slideshow using scroll
 
-    import imageData from '../lib/data/image_data.json'
-    const images = imageData[0].images;
-    
-    console.log('imageData', images);
+	// Make use of route and listing_id in
+
+	import imageData from '../lib/data/image_data.json';
+	const images = imageData[0].images;
+
+	console.log('imageData', images);
 </script>
 
-{#each images as image (image.image_url)}
-    <img src={image.image_url} alt={image.tags} />
-{/each}
-
+<div class="m-4 rounded-lg overflow-hidden">
+	<div class="grid grid-cols-4 gap-2">
+        <ImageGrid {images} />
+	</div>
+</div>

@@ -1,7 +1,24 @@
+<script>
+    // Desktop
+    // 1. Create grid with CSS grid with show all button (simple)
+    // 2. Create grid with CSS grid in a modal
+    // 3. Create slideshow using svelte transitions
+    // 4. Add masonry to the grid in modal
 
+    // Mobile
+    // 1. Create slideshow using scroll
+    // 2. Create grid with CSS grid in a modal
+    // 1. Create slideshow using scroll
 
-<h1>This text needs to replaced with a component showing Airbnb style image grid</h1>
-<p>See <a href="https://www.airbnb.com/rooms/20238974">the link</a> for an example. The ideal component will make use of Flowbite-Svelte and Tailwind CSS</p>
-<p>The grid should be dynamic and interactive and work for multiple screen sizes similiar to the one on Airbnb</p>
-<p>Example images can be found in image_data.json</p>
+    // Make use of route and listing_id in 
+
+    import imageData from '../lib/data/image_data.json'
+    const images = imageData[0].images;
+    
+    console.log('imageData', images);
+</script>
+
+{#each images as image (image.image_url)}
+    <img src={image.image_url} alt={image.tags} />
+{/each}
 

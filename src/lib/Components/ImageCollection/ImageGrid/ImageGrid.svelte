@@ -2,13 +2,21 @@
 	export let images = [];
 	export let expandImageGrid = false;
 
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
 	// Components
 	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
 	import CloseButton from './CloseButton.svelte';
 
 	// Expand/collapse grid
 	// let expandImageGrid = false;
-	const toggleImageGridExpansion = () => (expandImageGrid = !expandImageGrid);
+	const toggleImageGridExpansion = () => {
+		if (expandImageGrid) {
+			dispatch('collapse');
+		}
+		expandImageGrid = !expandImageGrid;
+	};
 
 	let activeIndex = -1;
 	const setActiveIndex = (index) => {

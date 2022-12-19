@@ -17,14 +17,18 @@
 
 	import imageData from '../lib/data/image_data.json';
 	const images = imageData[0].images;
+
+	let expandImageGrid = false;
+	const expandGrid = () => (expandImageGrid = true);
+	const collapseGrid = () => (expandImageGrid = false);
 </script>
 
-<div class="hidden sm:block">
-    <ImageGrid {images} />
+<div class="sm:block" class:hidden={!expandImageGrid}>
+	<ImageGrid {images} {expandImageGrid} on:collapse={collapseGrid} />
 </div>
-<!-- <div class="sm:hidden">
-    <Slideshow {images} />
-</div> -->
-<SlideshowModal {images} />
-
-
+{#if !expandImageGrid}
+	<div class="sm:hidden">
+		<Slideshow {images} on:click={expandGrid} />
+	</div>
+{/if}
+<!-- <SlideshowModal {images} /> -->

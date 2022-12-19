@@ -8,6 +8,7 @@
 	// Components
 	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
 	import CloseButton from './CloseButton.svelte';
+	import SlideshowModal from '../Slideshow/SlideshowModal.svelte';
 
 	// Expand/collapse grid
 	// let expandImageGrid = false;
@@ -21,7 +22,10 @@
 	let activeIndex = -1;
 	const setActiveIndex = (index) => {
 		activeIndex = index;
+		isModelOpen = true
 	};
+
+	let isModelOpen = false;
 </script>
 
 <div
@@ -59,3 +63,9 @@
 		{/if}
 	</div>
 </div>
+
+{#if isModelOpen}
+<SlideshowModal {images} />
+{/if}
+
+

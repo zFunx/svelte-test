@@ -31,4 +31,3 @@
 		<Slideshow {images} on:click={expandGrid} />
 	</div>
 {/if}
-<!-- <SlideshowModal {images} /> -->

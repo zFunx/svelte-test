@@ -1,6 +1,8 @@
 <script>
 	// Components
 	import ImageGrid from '$lib/Components/ImageCollection/ImageGrid/ImageGrid.svelte';
+	import Slideshow from '$lib/Components/ImageCollection/Slideshow/Slideshow.svelte';
+	import SlideshowModal from '$lib/Components/ImageCollection/Slideshow/SlideshowModal.svelte';
 
 	// Desktop
 	// 1. (Completed) Create grid with CSS grid with show all button (simple)
@@ -17,6 +19,12 @@
 	const images = imageData[0].images;
 </script>
 
-<ImageGrid {images} />
+<div class="hidden sm:block">
+    <ImageGrid {images} />
+</div>
+<!-- <div class="sm:hidden">
+    <Slideshow {images} />
+</div> -->
+<SlideshowModal {images} />
 
 

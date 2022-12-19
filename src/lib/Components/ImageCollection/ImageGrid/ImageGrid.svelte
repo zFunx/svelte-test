@@ -1,22 +1,25 @@
 <script>
 	export let images = [];
+	export let expandImageGrid = false;
 
 	// Components
 	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
 	import CloseButton from './CloseButton.svelte';
 
 	// Expand/collapse grid
-	let expandImageGrid = false;
+	// let expandImageGrid = false;
 	const toggleImageGridExpansion = () => (expandImageGrid = !expandImageGrid);
 
 	let activeIndex = -1;
-	const setActiveIndex = (index) => (activeIndex = index);
+	const setActiveIndex = (index) => {
+		activeIndex = index;
+	};
 </script>
 
 <div
 	class={`${
 		expandImageGrid
-			? 'bg-white md:pt-24 md:pb-4 md:px-12 top-0 bottom-0 left-0 right-0 overflow-auto fixed'
+			? 'bg-white md:pt-24 md:pb-4 md:px-12 top-0 bottom-0 left-0 right-0 overflow-auto fixed snap-y snap-mandatory'
 			: 'my-4 mx-12 overflow-hidden relative rounded-lg'
 	} `}
 >
@@ -25,7 +28,7 @@
 			<img
 				class={`${
 					index % 3 == 0 && expandImageGrid ? 'w-full' : 'h-full'
-				} object-cover transition-all brightness-100 border-white cursor-pointer hover:brightness-90
+				} object-cover snap-center transition-all brightness-100 border-white cursor-pointer hover:brightness-90
                     ${
 											'row-span-' +
 											[expandImageGrid ? (index % 3 == 0 ? 4 : 2) : 0 == index ? 2 : 1]

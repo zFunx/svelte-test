@@ -3,14 +3,12 @@
 	import ImageGrid from '$lib/Components/ImageCollection/ImageGrid/ImageGrid.svelte';
 
 	// Desktop
-	// 1. Create grid with CSS grid with show all button (simple)
-	// 2. Create grid with CSS grid in a modal
-	// 3. Create slideshow using svelte transitions
-	// 4. Add masonry to the grid in modal
+	// 1. (Completed) Create grid with CSS grid with show all button (simple)
+	// 2. (Completed) Create grid with CSS grid in a modal
 
 	// Mobile
 	// 1. Create slideshow using scroll
-	// 2. Create grid with CSS grid in a modal
+	// 2. (Completed) Create grid with CSS grid in a modal
 	// 1. Create slideshow using scroll
 
 	// Make use of route and listing_id in

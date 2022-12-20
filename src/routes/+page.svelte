@@ -1,5 +1,6 @@
 <script>
 	// Components
+	import FullPageImageGrid from '$lib/Components/ImageCollection/FullPageImageGrid.svelte';
 	import ImageGrid from '$lib/Components/ImageCollection/ImageGrid/ImageGrid.svelte';
 	import ImageShowcase from '$lib/Components/ImageCollection/ImageShowcase.svelte';
 	import Slideshow from '$lib/Components/ImageCollection/Slideshow/Slideshow.svelte';
@@ -36,6 +37,8 @@
 		{images}
 		on:click={() => (currentImageDisplayState = imageDisplayStates.showall)}
 	/>
+{:else if currentImageDisplayState == imageDisplayStates.showall}
+	<FullPageImageGrid {images} on:close={() => (currentImageDisplayState = imageDisplayStates.showcase)} />
 {/if}
 
 <!-- <div class="sm:block" class:hidden={!expandImageGrid}>

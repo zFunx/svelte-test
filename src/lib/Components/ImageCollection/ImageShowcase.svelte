@@ -1,6 +1,7 @@
 <script>
 	export let images = [];
 
+	import { fade } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
@@ -10,7 +11,7 @@
 	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
 </script>
 
-<div class="my-4 mx-12 overflow-hidden relative rounded-lg">
+<div transition:fade class="my-4 mx-12 overflow-hidden relative rounded-lg">
 	<div class="grid grid-cols-4 grid-flow-col gap-2">
 		{#each images.slice(0, 5) as image, index (image.image_url)}
 			<img

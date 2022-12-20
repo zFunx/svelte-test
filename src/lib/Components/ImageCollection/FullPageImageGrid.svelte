@@ -6,6 +6,7 @@
 	const dispatch = createEventDispatcher();
 
 	const onClose = () => dispatch('close');
+	const onClick = () => dispatch('click');
 
 	// Components
 	import CloseButton from '$lib/Components/ImageCollection/ImageGrid/CloseButton.svelte';
@@ -25,9 +26,10 @@
 				src={image.image_url}
 				alt={image.tags}
 				loading="lazy"
+				on:click={onClick}
 			/>
 		{/each}
 
-		<CloseButton className="absolute top-6 left-6" on:click={onClose} />
+		<CloseButton className="fixed top-6 left-6" on:click={onClose} />
 	</div>
 </div>

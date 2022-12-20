@@ -28,7 +28,7 @@
 	<div class="grid grid-cols-4 gap-2">
 		{#each images as image, index (image.image_url)}
 			<img
-				class="h-full object-cover snap-center transition-all brightness-100 border-white cursor-pointer hover:brightness-90"
+				class="w-full object-cover snap-center transition-all brightness-100 border-white cursor-pointer hover:brightness-90"
 				class:col-span-2={0 != (index + 1) % spanToFullIndex}
 				class:row-span-2={0 != (index + 1) % spanToFullIndex}
 				class:col-span-4={0 == (index + 1) % spanToFullIndex}

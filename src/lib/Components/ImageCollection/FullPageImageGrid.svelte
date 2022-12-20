@@ -25,7 +25,7 @@
 	transition:fade
 	class="bg-white fixed top-0 bottom-0 left-0 right-0 md:py-4 md:px-12 overflow-auto"
 >
-	<div class="grid grid-cols-4 gap-2">
+	<div class="grid grid-cols-4 gap-2 md:w-3/4 m-auto">
 		{#each images as image, index (image.image_url)}
 			<img
 				class="w-full object-cover snap-center transition-all brightness-100 border-white cursor-pointer hover:brightness-90"

@@ -8,7 +8,7 @@
 	const onClick = (index) => dispatch('click', index);
 
 	// Components
-	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
+	import ShowAllBtn from '$lib/Components/ImageCollection/ShowAllBtn.svelte';
 </script>
 
 <div transition:fade class="my-4 mx-12 overflow-hidden relative rounded-lg">

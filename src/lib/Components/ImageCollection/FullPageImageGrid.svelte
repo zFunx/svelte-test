@@ -11,7 +11,7 @@
 	const onClick = (index) => dispatch('click', index);
 
 	// Components
-	import CloseButton from '$lib/Components/ImageCollection/ImageGrid/CloseButton.svelte';
+	import CloseButton from '$lib/Components/ImageCollection/CloseButton.svelte';
 
 	const spanToFullIndex = 3; // Every third image with full width
 

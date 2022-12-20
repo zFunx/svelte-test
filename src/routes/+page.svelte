@@ -4,8 +4,8 @@
 
 	import FullPageImageGrid from '$lib/Components/ImageCollection/FullPageImageGrid.svelte';
 	import ImageShowcase from '$lib/Components/ImageCollection/ImageShowcase.svelte';
-	import Slideshow from '$lib/Components/ImageCollection/Slideshow/Slideshow.svelte';
-	import CloseButton from '$lib/Components/ImageCollection/ImageGrid/CloseButton.svelte';
+	import Slideshow from '$lib/Components/ImageCollection/Slideshow.svelte';
+	import CloseButton from '$lib/Components/ImageCollection/CloseButton.svelte';
 
 	import imageData from '../lib/data/image_data.json';
 	const images = imageData[0].images;

@@ -19,7 +19,7 @@
 
 	const refs = [];
 	onMount(() => {
-		refs[activeIndex].scrollIntoView({behavior: "smooth"})
+		refs[activeIndex].scrollIntoView({ behavior: 'auto' });
 	});
 </script>
 
@@ -27,13 +27,12 @@
 	<div class="flex overflow-auto snap-x snap-mandatory" on:scroll={onScroll}>
 		{#each images as image, index (image.image_url)}
 			<img
-			on:click={onClick(index)}
-			class="snap-center"
+				on:click={onClick(index)}
+				class="snap-center"
 				src={image.image_url}
 				alt={image.tags}
 				loading="lazy"
 				bind:this={refs[index]}
-
 			/>
 		{/each}
 		<div class="absolute bottom-4 right-4 bg-black rounded-xl px-2 py-2 text-white">

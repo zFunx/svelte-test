@@ -3,22 +3,9 @@
 	import { fade } from 'svelte/transition';
 
 	import FullPageImageGrid from '$lib/Components/ImageCollection/FullPageImageGrid.svelte';
-	import ImageGrid from '$lib/Components/ImageCollection/ImageGrid/ImageGrid.svelte';
 	import ImageShowcase from '$lib/Components/ImageCollection/ImageShowcase.svelte';
 	import Slideshow from '$lib/Components/ImageCollection/Slideshow/Slideshow.svelte';
-	import SlideshowModal from '$lib/Components/ImageCollection/Slideshow/SlideshowModal.svelte';
-	// Components
 	import CloseButton from '$lib/Components/ImageCollection/ImageGrid/CloseButton.svelte';
-	// Desktop
-	// 1. (Completed) Create grid with CSS grid with show all button (simple)
-	// 2. (Completed) Create grid with CSS grid in a modal
-
-	// Mobile
-	// 1. Create slideshow using scroll
-	// 2. (Completed) Create grid with CSS grid in a modal
-	// 1. Create slideshow using scroll
-
-	// Make use of route and listing_id in
 
 	import imageData from '../lib/data/image_data.json';
 	const images = imageData[0].images;
@@ -31,10 +18,11 @@
 	};
 	let currentImageDisplayState = imageDisplayStates.showcase;
 	const changeView = (displayState, activeIndex) => {
-		imageActiveIndex = activeIndex;
+		if (typeof activeIndex !== 'undefined') {
+			imageActiveIndex = activeIndex;
+		}
 		currentImageDisplayState = imageDisplayStates[displayState];
 	};
-	// const showShowcase = () => (currentImageDisplayState = imageDisplayStates.showcase);
 </script>
 
 {#if currentImageDisplayState == imageDisplayStates.showcase}
@@ -53,7 +41,7 @@
 		{images}
 		activeIndex={imageActiveIndex}
 		on:click={(e) => changeView('slideshow', e.detail)}
-		on:close={() => (currentImageDisplayState = imageDisplayStates.showcase)}
+		on:close={() => changeView('showcase')}
 	/>
 {:else if currentImageDisplayState == imageDisplayStates.slideshow}
 	<div
@@ -63,9 +51,6 @@
 		<div class="md:rounded-lg overflow-hidden">
 			<Slideshow {images} activeIndex={imageActiveIndex} />
 		</div>
-		<CloseButton
-			className="fixed top-6 left-6"
-			on:click={() => (currentImageDisplayState = imageDisplayStates.showall)}
-		/>
+		<CloseButton className="fixed top-6 left-6" on:click={() => changeView('showall')} />
 	</div>
 {/if}

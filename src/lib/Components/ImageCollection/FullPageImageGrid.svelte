@@ -17,7 +17,7 @@
 
 	const refs = [];
 	onMount(() => {
-		refs[activeIndex].scrollIntoView({ behavior: 'smooth' });
+		refs[activeIndex].scrollIntoView({ behavior: 'auto' });
 	});
 </script>
 

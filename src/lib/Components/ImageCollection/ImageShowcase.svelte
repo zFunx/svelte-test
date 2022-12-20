@@ -25,6 +25,6 @@
 			/>
 		{/each}
 
-		<ShowAllBtn className="absolute right-6 bottom-6" on:click={onClick} />
+		<ShowAllBtn className="absolute right-6 bottom-6" on:click={() => onClick(0)} />
 	</div>
 </div>

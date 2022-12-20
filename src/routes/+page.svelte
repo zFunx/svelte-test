@@ -23,36 +23,36 @@
 	import imageData from '../lib/data/image_data.json';
 	const images = imageData[0].images;
 
-	let expandImageGrid = false;
-	const expandGrid = () => (expandImageGrid = true);
-	const collapseGrid = () => (expandImageGrid = false);
-
+	let imageActiveIndex = 0;
 	const imageDisplayStates = {
 		showcase: 'showcase',
 		showall: 'showall',
 		slideshow: 'slideshow'
 	};
 	let currentImageDisplayState = imageDisplayStates.showcase;
+	const changeView = (displayState, activeIndex) => {
+		imageActiveIndex = activeIndex;
+		currentImageDisplayState = imageDisplayStates[displayState];
+	};
 	// const showShowcase = () => (currentImageDisplayState = imageDisplayStates.showcase);
 </script>
 
 {#if currentImageDisplayState == imageDisplayStates.showcase}
 	<div class="hidden sm:block">
-		<ImageShowcase
-			{images}
-			on:click={() => (currentImageDisplayState = imageDisplayStates.showall)}
-		/>
+		<ImageShowcase {images} on:click={(e) => changeView('showall', e.detail)} />
 	</div>
-	<div
-		class="cursor-pointer sm:hidden"
-		on:click={() => (currentImageDisplayState = imageDisplayStates.showall)}
-	>
-		<Slideshow {images} />
+	<div class="cursor-pointer sm:hidden">
+		<Slideshow
+			{images}
+			on:click={(e) => changeView('showall', e.detail)}
+			activeIndex={imageActiveIndex}
+		/>
 	</div>
 {:else if currentImageDisplayState == imageDisplayStates.showall}
 	<FullPageImageGrid
 		{images}
-		on:click={() => (currentImageDisplayState = imageDisplayStates.slideshow)}
+		activeIndex={imageActiveIndex}
+		on:click={(e) => changeView('slideshow', e.detail)}
 		on:close={() => (currentImageDisplayState = imageDisplayStates.showcase)}
 	/>
 {:else if currentImageDisplayState == imageDisplayStates.slideshow}
@@ -61,7 +61,7 @@
 		class="bg-black fixed top-0 bottom-0 left-0 right-0 flex items-center md:p-16"
 	>
 		<div class="md:rounded-lg overflow-hidden">
-			<Slideshow {images} />
+			<Slideshow {images} activeIndex={imageActiveIndex} />
 		</div>
 		<CloseButton
 			className="fixed top-6 left-6"

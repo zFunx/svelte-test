@@ -5,7 +5,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	const onClick = () => dispatch('click');
+	const onClick = (index) => dispatch('click', index);
 
 	// Components
 	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
@@ -21,7 +21,7 @@
 				src={image.image_url}
 				alt={image.tags}
 				loading="lazy"
-				on:click={onClick}
+				on:click={onClick(index)}
 			/>
 		{/each}
 

@@ -1,8 +1,10 @@
 <script>
 	export let images = [];
 
-	// import { createEventDispatcher } from 'svelte';
-	// const dispatch = createEventDispatcher();
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
+	const onClick = () => dispatch('click');
 
 	// Components
 	import ShowAllBtn from '$lib/Components/ImageCollection/ImageGrid/ShowAllBtn.svelte';
@@ -18,9 +20,10 @@
 				src={image.image_url}
 				alt={image.tags}
 				loading="lazy"
+				on:click={onClick}
 			/>
 		{/each}
 
-		<ShowAllBtn className="absolute right-6 bottom-6" />
+		<ShowAllBtn className="absolute right-6 bottom-6" on:click={onClick} />
 	</div>
 </div>

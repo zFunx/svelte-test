@@ -25,14 +25,17 @@
 
 	const imageDisplayStates = {
 		showcase: 'showcase',
-		showAll: 'showcase',
+		showall: 'showall',
 		slideshow: 'slideshow'
 	};
 	let currentImageDisplayState = imageDisplayStates.showcase;
 </script>
 
 {#if currentImageDisplayState == imageDisplayStates.showcase}
-	<ImageShowcase {images} />
+	<ImageShowcase
+		{images}
+		on:click={() => (currentImageDisplayState = imageDisplayStates.showall)}
+	/>
 {/if}
 
 <!-- <div class="sm:block" class:hidden={!expandImageGrid}>

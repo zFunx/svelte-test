@@ -1,6 +1,7 @@
 <script>
 	// Components
 	import ImageGrid from '$lib/Components/ImageCollection/ImageGrid/ImageGrid.svelte';
+	import ImageShowcase from '$lib/Components/ImageCollection/ImageShowcase.svelte';
 	import Slideshow from '$lib/Components/ImageCollection/Slideshow/Slideshow.svelte';
 	import SlideshowModal from '$lib/Components/ImageCollection/Slideshow/SlideshowModal.svelte';
 
@@ -21,13 +22,24 @@
 	let expandImageGrid = false;
 	const expandGrid = () => (expandImageGrid = true);
 	const collapseGrid = () => (expandImageGrid = false);
+
+	const imageDisplayStates = {
+		showcase: 'showcase',
+		showAll: 'showcase',
+		slideshow: 'slideshow'
+	};
+	let currentImageDisplayState = imageDisplayStates.showcase;
 </script>
 
-<div class="sm:block" class:hidden={!expandImageGrid}>
+{#if currentImageDisplayState == imageDisplayStates.showcase}
+	<ImageShowcase {images} />
+{/if}
+
+<!-- <div class="sm:block" class:hidden={!expandImageGrid}>
 	<ImageGrid {images} {expandImageGrid} on:collapse={collapseGrid} />
-</div>
-{#if !expandImageGrid}
+</div> -->
+<!-- {#if !expandImageGrid}
 	<div class="sm:hidden">
 		<Slideshow {images} on:click={expandGrid} />
 	</div>
-{/if}
+{/if} -->

@@ -1,15 +1,17 @@
 <script>
-	// Components
 	import { fade } from 'svelte/transition';
 
+	// Components
 	import FullPageImageGrid from '$lib/Components/ImageCollection/FullPageImageGrid.svelte';
 	import ImageShowcase from '$lib/Components/ImageCollection/ImageShowcase.svelte';
 	import Slideshow from '$lib/Components/ImageCollection/Slideshow.svelte';
 	import CloseButton from '$lib/Components/ImageCollection/CloseButton.svelte';
 
+	// Images
 	import imageData from '../lib/data/image_data.json';
 	const images = imageData[0].images;
 
+	// Image state contro
 	let imageActiveIndex = 0;
 	const imageDisplayStates = {
 		showcase: 'showcase',
